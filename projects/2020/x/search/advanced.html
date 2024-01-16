@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Advanced Search</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="links-container">
+            <a href="index.html">Search</a>
+        </div>
+        <img style="position: absolute; top: 5%; left: 5%;" src="Google_2015_logo.svg.webp" alt="Google" width="100">
+        <h5 style="color: red; position: absolute; top: 15%; left: 5%;">Advanced Search</h5>
+        <table>
+            <form action="https://google.com/search">
+                <tr>
+                    <th>Show pages that contain...</th>
+                </tr>
+                <tr>
+                    <td>all these words:</td>
+                    <td><input type="text" name="as_q"></td>
+                </tr>
+                <tr>
+                    <td>this exact word or phrase:</td>
+                    <td><input type="text" name="as_epq"></td>
+                </tr>
+                <tr>
+                    <td>any of these words:</td>
+                    <td><input type="text" name="as_oq"></td>
+                </tr>
+                <tr>
+                    <td>none of these words:</td>
+                    <td><input type="text" name="as_eq"></td>
+                </tr>
+                <div class="as">
+                    <input style="background-color: dodgerblue; color: white; margin: 1px; border-radius: 2px; border: 1px solid white;" type="submit" value="Advanced Search">
+                </div>
+            </form>
+        </table>
+        </body>
+</html>
