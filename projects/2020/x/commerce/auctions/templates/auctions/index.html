@@ -1,0 +1,58 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Active Listings</h2>
+    <br>
+    <div class="container">
+        {% for listing in listings %}
+        <a href="{% url 'listing' listing.id %}" class="product_link">
+            <div class="product">
+                {% if listing.image_url %}
+                <img src="{{ listing.image_url }}">
+                {% endif %}
+                <div class="info">
+                    <p class="title">{{ listing.title }}</p>
+                    <p class="price">Price: {% if listing.current_bid != 0 %} ${{listing.current_bid}} {% else %} ${{listing.starting_bid}} {% endif %} </p>
+                    <p class="description">{{ listing.description }}</p>
+                    <p class="creation">Created {{ listing.created_at }}</p>
+                </div>
+
+                {% if user == listing.creator %}
+                    <div class="winnertag">
+                        <button type="button" class="btn btn-primary">Posted by you</button>
+                    </div>
+                {% endif %}
+
+                {% if user == listing.current_winner %}
+                    <div class="winnertag">
+                        <button type="button" class="btn btn-success">Currently Winning</button>
+                    </div>
+                {% endif %}
+            </div>
+        </a>
+
+        {% empty %}
+        <h2>No Active listings.</h2>
+        {% endfor %}
+    </div>
+    
+    <br>
+    <div class="pagination">
+        <span class="step-links">
+            {% if listings.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ listings.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Página {{ listings.number }} de {{ listings.paginator.num_pages }}.
+            </span>
+    
+            {% if listings.has_next %}
+                <a href="?page={{ listings.next_page_number }}">next</a>
+                <a href="?page={{ listings.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    
+{% endblock %}
